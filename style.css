@@ -1,0 +1,459 @@
+/* ============================================================
+   style.css — 2026 年度先知性領受互動網頁
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+TC:wght@400;700&display=swap');
+
+/* ── 1. CSS 變數系統 (Design Tokens) ── */
+:root {
+  --bg-color: #0D0D0F;
+  --surface-color: #161618;
+  --border-color: rgba(200, 169, 126, 0.2);
+  --text-primary: #F0E6D3;
+  --text-secondary: rgba(240, 230, 211, 0.6);
+  --accent-color: #C8A97E;
+  --keyword-color: #C8A97E;
+
+  --font-serif: 'Noto Serif TC', serif;
+  --font-sans: 'Noto Sans TC', sans-serif;
+
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2.5rem;
+  --spacing-xl: 4rem;
+
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.6s ease;
+}
+
+/* ── 2. Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  overflow-x: hidden;
+  /* 噪點紋理 */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* ── 3. Layer 系統 ── */
+.layer {
+  display: none;
+  opacity: 0;
+  min-height: 100vh;
+  width: 100%;
+}
+.layer.active {
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+/* ── 4. Layer 1 — 集體查驗與呼召 ── */
+#layer-1 {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--spacing-xl) var(--spacing-md);
+  overflow: hidden;
+}
+
+.breath-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(600px, 90vw);
+  height: min(600px, 90vw);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 169, 126, 0.18) 0%, transparent 70%);
+  animation: breathGlow 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.layer-1__content {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.layer-1__year {
+  font-family: var(--font-serif);
+  font-size: clamp(4rem, 15vw, 8rem);
+  font-weight: 700;
+  color: var(--accent-color);
+  letter-spacing: 0.1em;
+  line-height: 1;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease 0.1s forwards;
+}
+
+.layer-1__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease 0.25s forwards;
+}
+
+.layer-1__body {
+  font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+  color: var(--text-secondary);
+  line-height: 1.9;
+  max-width: 480px;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease 0.4s forwards;
+}
+
+.cta-button {
+  margin-top: var(--spacing-sm);
+  padding: 0.85rem 2.5rem;
+  background: transparent;
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background var(--transition-base), color var(--transition-base), transform var(--transition-fast), box-shadow var(--transition-base);
+  opacity: 0;
+  animation: fadeInUp 0.6s ease 0.55s forwards;
+}
+.cta-button:hover {
+  background: var(--accent-color);
+  color: var(--bg-color);
+  box-shadow: 0 0 24px rgba(200, 169, 126, 0.35);
+  transform: translateY(-2px);
+}
+.cta-button:active { transform: scale(0.96); }
+
+/* ── 5. Layer 2 — 核心領受矩陣 ── */
+#layer-2 {
+  padding: var(--spacing-lg) var(--spacing-md);
+  align-items: center;
+}
+
+.layer-2__header {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+  width: 100%;
+}
+.layer-2__header h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+  color: var(--accent-color);
+  letter-spacing: 0.1em;
+  margin-bottom: var(--spacing-xs);
+}
+.layer-2__header p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+}
+
+.keyword-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-sm);
+  width: 100%;
+  max-width: 900px;
+}
+
+.keyword-card {
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: var(--spacing-md) var(--spacing-sm);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  text-align: center;
+  transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+  min-width: 140px;
+  position: relative;
+  overflow: hidden;
+  outline: none;
+}
+.keyword-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, var(--card-color, var(--accent-color)) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+.keyword-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--card-color, var(--accent-color));
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+.keyword-card:hover::before { opacity: 0.06; }
+.keyword-card:active { transform: scale(0.96); }
+.keyword-card:focus-visible {
+  outline: 2px solid var(--card-color, var(--accent-color));
+  outline-offset: 2px;
+}
+.keyword-card.selected {
+  animation: cardSelect 0.3s ease forwards;
+}
+
+.card-id {
+  font-size: 0.7rem;
+  opacity: 0.5;
+  letter-spacing: 0.1em;
+  color: var(--text-primary);
+}
+.card-keyword {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 4vw, 1.8rem);
+  font-weight: 700;
+  color: var(--card-color, var(--accent-color));
+  letter-spacing: 0.05em;
+}
+.card-subtitle {
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  letter-spacing: 0.08em;
+}
+
+/* ── 6. Layer 3 — 同工領受內容 ── */
+#layer-3 {
+  align-items: center;
+  padding: var(--spacing-md);
+}
+
+#layer-3__capture-zone {
+  width: 100%;
+  max-width: 700px;
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.revelation-header {
+  padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-md);
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+}
+.revelation-id {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-xs);
+}
+.revelation-keyword {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 7vw, 3rem);
+  font-weight: 700;
+  color: var(--keyword-color);
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+}
+.revelation-subtitle {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-top: var(--spacing-xs);
+  letter-spacing: 0.1em;
+}
+
+.revelation-content {
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.revelation-footer {
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-top: 1px solid var(--border-color);
+  text-align: right;
+}
+.revelation-meta {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.1em;
+}
+
+/* ContentBlock — narrative */
+.block-narrative {
+  border-left: 3px solid var(--accent-color);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: var(--text-primary);
+  font-style: normal;
+  margin: 0;
+  opacity: 0;
+  animation: blockReveal 0.5s ease forwards;
+}
+
+/* ContentBlock — attributes */
+.block-attributes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  padding: var(--spacing-md) 0;
+  opacity: 0;
+  animation: blockReveal 0.5s ease forwards;
+}
+.block-attributes::before {
+  content: attr(data-keyword);
+  font-size: clamp(5rem, 15vw, 8rem);
+  font-family: var(--font-serif);
+  font-weight: 700;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.04;
+  pointer-events: none;
+  color: var(--keyword-color);
+  white-space: nowrap;
+  user-select: none;
+}
+.attr-item {
+  font-family: var(--font-serif);
+  font-size: clamp(1.3rem, 4vw, 1.6rem);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--keyword-color);
+  position: relative;
+  z-index: 1;
+}
+
+/* ContentBlock — prayer */
+.block-prayer {
+  font-style: italic;
+  border: 1px solid var(--accent-color);
+  border-radius: 4px;
+  padding: 1.25rem 1.5rem;
+  position: relative;
+  line-height: 1.85;
+  font-size: 1rem;
+  color: var(--text-primary);
+  opacity: 0;
+  animation: blockReveal 0.5s ease forwards;
+}
+.prayer-label {
+  position: absolute;
+  top: -0.65rem;
+  left: 1rem;
+  background: var(--surface-color);
+  padding: 0 0.5rem;
+  font-size: 0.75rem;
+  color: var(--accent-color);
+  font-style: normal;
+  letter-spacing: 0.1em;
+  font-family: var(--font-sans);
+}
+
+/* Layer 3 Actions */
+.layer-3__actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  width: 100%;
+  max-width: 700px;
+  justify-content: center;
+}
+.action-btn {
+  padding: 0.7rem 1.8rem;
+  border-radius: 2px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  outline: none;
+}
+.action-btn:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }
+#btn-back {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+#btn-back:hover { border-color: var(--text-secondary); color: var(--text-primary); }
+#btn-screenshot {
+  background: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  color: var(--bg-color);
+  font-weight: 700;
+}
+#btn-screenshot:hover { box-shadow: 0 0 20px rgba(200, 169, 126, 0.4); transform: translateY(-1px); }
+#btn-screenshot:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+/* ── 7. Animations ── */
+@keyframes breathGlow {
+  0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+  50%       { opacity: 0.7; transform: translate(-50%, -50%) scale(1.08); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cardSelect {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+@keyframes blockReveal {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── 8. Responsive Breakpoints ── */
+@media (min-width: 480px) {
+  .keyword-card { padding: var(--spacing-md); }
+}
+
+@media (min-width: 768px) {
+  .keyword-grid { grid-template-columns: repeat(3, 1fr); }
+  .keyword-card { min-width: 200px; }
+}
+
+@media (min-width: 1200px) {
+  .keyword-grid { max-width: 900px; }
+  #layer-3__capture-zone { max-width: 700px; }
+}
+
+/* ── 9. Accessibility ── */
+@media (prefers-reduced-motion: reduce) {
+  .breath-glow { animation: none; opacity: 0.4; }
+  .layer-1__year, .layer-1__title, .layer-1__body, .cta-button { animation: none; opacity: 1; }
+  .block-narrative, .block-attributes, .block-prayer { animation: none; opacity: 1; }
+  .keyword-card { transition: none; }
+}

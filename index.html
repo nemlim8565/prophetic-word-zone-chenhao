@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0D0D0F">
+  <meta name="description" content="2026 年度團隊先知性領受 — 12 個關鍵字，邀請你靜下心一同加入禱告、查驗神在今年對整個區的心意。">
+  <title>2026 年度領受 — 12 個關鍵字</title>
+  <link rel="stylesheet" href="style.css?v=1.0.0">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+  <!-- html2canvas (唯一允許的外部依賴) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       Layer 1 — 集體查驗與呼召
+  ════════════════════════════════════════════ -->
+  <section id="layer-1" class="layer active" role="main" aria-label="集體查驗與呼召">
+    <div class="breath-glow" aria-hidden="true"></div>
+    <div class="layer-1__content">
+      <p class="layer-1__year">2026</p>
+      <h1 class="layer-1__title">年度發展：12 個關鍵領受</h1>
+      <p class="layer-1__body">
+        這是屬於整個團隊的季節性領受。<br>
+        邀請你靜下心，一同加入禱告、查驗神在今年對整個區的心意。
+      </p>
+      <button id="btn-enter" class="cta-button" aria-label="進入12個關鍵領受">我要加入</button>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       Layer 2 — 核心領受矩陣
+  ════════════════════════════════════════════ -->
+  <section id="layer-2" class="layer" role="main" aria-label="核心領受矩陣">
+    <div class="layer-2__header">
+      <h2>12 個關鍵領受</h2>
+      <p>選擇一個關鍵字，深入查看領受內容</p>
+    </div>
+    <div class="keyword-grid" role="list" aria-label="關鍵字列表">
+      <!-- 由 main.js 動態渲染 -->
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       Layer 3 — 同工領受與內容
+  ════════════════════════════════════════════ -->
+  <section id="layer-3" class="layer" role="main" aria-label="關鍵字詳細領受">
+    <div id="layer-3__capture-zone">
+      <header class="revelation-header">
+        <span class="revelation-id"></span>
+        <h2 class="revelation-keyword"></h2>
+        <p class="revelation-subtitle"></p>
+      </header>
+      <div class="revelation-content" aria-live="polite">
+        <!-- 由 main.js 動態渲染 ContentBlock[] -->
+      </div>
+      <footer class="revelation-footer">
+        <small class="revelation-meta">2026 年度領受</small>
+      </footer>
+    </div>
+
+    <div class="layer-3__actions">
+      <button id="btn-back" class="action-btn" aria-label="返回關鍵字列表">返回清單</button>
+      <button id="btn-screenshot" class="action-btn" aria-label="截圖存檔為PNG">截圖存檔</button>
+    </div>
+  </section>
+
+  <!-- 資料與邏輯 -->
+  <script src="data.js?v=1.0.0"></script>
+  <script src="main.js?v=1.0.0"></script>
+</body>
+</html>
