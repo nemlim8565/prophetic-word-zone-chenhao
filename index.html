@@ -51,10 +51,31 @@
   ════════════════════════════════════════════ -->
   <section id="layer-2" class="layer" role="main" aria-label="核心領受矩陣">
     <div class="layer-2__header">
+      <button id="btn-home" class="home-btn" aria-label="回到首頁">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9.5z" />
+          <polyline points="9 21 9 12 15 12 15 21" />
+        </svg>
+      </button>
       <h2>12 個關鍵領受</h2>
     </div>
     <div class="keyword-grid" role="list" aria-label="關鍵字列表">
       <!-- 由 main.js 動態渲染 -->
+    </div>
+    <div class="layer-2__footer">
+      <a id="btn-share" href="https://www.google.com/" target="_blank" rel="noopener noreferrer" class="share-btn"
+        aria-label="我要分享">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="18" cy="5" r="3" />
+          <circle cx="6" cy="12" r="3" />
+          <circle cx="18" cy="19" r="3" />
+          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+          <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+        </svg>
+        我要分享
+      </a>
     </div>
   </section>
 
@@ -77,10 +98,30 @@
     </div>
 
     <div class="layer-3__actions">
-      <button id="btn-back" class="action-btn" aria-label="返回關鍵字列表">返回清單</button>
-      <button id="btn-screenshot" class="action-btn" aria-label="截圖存檔為PNG">截圖存檔</button>
+      <button id="btn-back" class="action-btn" aria-label="返回關鍵字列表">返回</button>
+      <button id="btn-question" class="action-btn action-btn--primary" aria-label="信仰反思與討論">信仰反思與討論</button>
+      <button id="btn-screenshot" class="action-btn action-btn--screenshot" aria-label="截圖存檔為PNG">截圖</button>
     </div>
   </section>
+
+  <!-- ═══════════════════════════════════════════
+       Modal — 信仰反思與討論
+  ════════════════════════════════════════════ -->
+  <div id="question-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="modal-card">
+      <header class="modal-header">
+        <h3 id="modal-title" class="modal-title">信仰反思與討論</h3>
+        <button id="modal-close" class="modal-close" aria-label="關閉視窗">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+      </header>
+      <div id="modal-questions" class="modal-questions"></div>
+    </div>
+  </div>
 
   <!-- 資料與邏輯 -->
   <script src="data.js?v=1.0.1"></script>

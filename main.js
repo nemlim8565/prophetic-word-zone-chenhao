@@ -78,7 +78,49 @@ function createBlock(block, keyword) {
     return div;
   }
 
+  if (block.type === 'question') {
+    // question blocks are handled by the modal; skip inline rendering
+    return document.createElement('div');
+  }
+
   return document.createElement('div');
+}
+
+/* ── 信仰反思 Modal ── */
+function openQuestionModal() {
+  const data = REVELATIONS.find(r => r.id === state.currentKeyword);
+  if (!data) return;
+
+  const questionBlock = data.blocks.find(b => b.type === 'question');
+  const modal = document.getElementById('question-modal');
+  const container = document.getElementById('modal-questions');
+
+  container.innerHTML = '';
+
+  if (questionBlock) {
+    questionBlock.content.split('\n').forEach(line => {
+      if (!line.trim()) return;
+      const p = document.createElement('p');
+      p.className = 'modal-question-item';
+      p.textContent = line.trim();
+      container.appendChild(p);
+    });
+  } else {
+    const p = document.createElement('p');
+    p.className = 'modal-question-item';
+    p.textContent = '目前這個關鍵字尚未收錄討論問題。';
+    container.appendChild(p);
+  }
+
+  modal.removeAttribute('hidden');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('modal-close').focus();
+}
+
+function closeQuestionModal() {
+  const modal = document.getElementById('question-modal');
+  modal.setAttribute('hidden', '');
+  document.body.style.overflow = '';
 }
 
 /* ── 截圖功能 ── */
@@ -89,6 +131,20 @@ async function captureZone() {
   btn.textContent = '處理中…';
   btn.disabled = true;
 
+  // ── 修正：html2canvas 無法處理 CSS animation forwards 狀態
+  // 截圖前強制所有動畫 block 顯示，截完後還原
+  const animatedBlocks = zone.querySelectorAll(
+    '.block-narrative, .block-attributes, .block-prayer'
+  );
+  animatedBlocks.forEach(el => {
+    el.style.opacity = '1';
+    el.style.transform = 'translateY(0)';
+    el.style.animation = 'none';
+  });
+
+  // 等一幀讓瀏覽器套用樣式後再截圖
+  await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+
   try {
     const bgColor = getComputedStyle(document.documentElement)
       .getPropertyValue('--bg-color').trim() || '#0D0D0F';
@@ -97,7 +153,8 @@ async function captureZone() {
       backgroundColor: bgColor,
       scale: 2,
       useCORS: true,
-      logging: false
+      logging: false,
+      allowTaint: true
     });
 
     const link = document.createElement('a');
@@ -110,6 +167,12 @@ async function captureZone() {
     alert('截圖失敗，請嘗試手動截圖。');
     console.error(err);
   } finally {
+    // 截圖完成後還原 inline style，讓 CSS 動畫重新接管
+    animatedBlocks.forEach(el => {
+      el.style.opacity = '';
+      el.style.transform = '';
+      el.style.animation = '';
+    });
     btn.textContent = '截圖存檔';
     btn.disabled = false;
   }
@@ -230,6 +293,25 @@ function initApp() {
     document.documentElement.style.setProperty('--keyword-color', '#C8A97E');
     state.currentKeyword = null;
     router.goTo('layer-2');
+  });
+
+  // Layer 2 Home 按鈕—回到 Layer 1
+  document.getElementById('btn-home').addEventListener('click', () => {
+    router.goTo('layer-1');
+  });
+
+  // 信仰反思與討論
+  document.getElementById('btn-question').addEventListener('click', openQuestionModal);
+  document.getElementById('modal-close').addEventListener('click', closeQuestionModal);
+
+  // 點擊遠景關閉 modal
+  document.getElementById('question-modal').addEventListener('click', e => {
+    if (e.target === e.currentTarget) closeQuestionModal();
+  });
+
+  // ESC 鍵關閉 modal
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeQuestionModal();
   });
 
   // 截圖
