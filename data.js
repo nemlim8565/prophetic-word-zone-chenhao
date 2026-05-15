@@ -3,20 +3,20 @@ const REVELATIONS = [
   {
     id: "01",
     keyword: "洋蔥皮",
-    subtitle: "內在重構",
+    subtitle: "Onion Skin",
     color: "#C8A97E",
     blocks: [
       {
         type: "narrative",
-        content: "就要脫去你們從前行為上的舊人，這舊人是因私慾的迷惑漸漸變壞的；\n又要將你們的心志改換一新，\n並且穿上新人；這新人是照著　神的形像造的，有真理的仁義和聖潔。\n - 以弗所書 4:22-24\n - 歌羅西書 3:9-10"
+        content: "象徵著神正親手剝開老我的保護色與舊有的樣式\n呼召我們成為新造的人。"
       },
       {
         type: "attributes",
-        content: "內在重構\nGospel Formation\n根基"
+        content: "更新者\n脫去舊人\n內在根基"
       },
       {
         type: "prayer",
-        content: "宣告聖靈要剝去那些為了自我保護而生出的「老我殼子」，求主賜下勇氣面對赤露敞開的生命更新。"
+        content: "宣告聖靈要剝去那些為了自我保護\n而生出的「老我殼子」，求主賜下勇氣\n面對赤露敞開的生命更新。"
       },
       {
         type: "question",
@@ -26,21 +26,21 @@ const REVELATIONS = [
   },
   {
     id: "02",
-    keyword: "切割的田地",
-    subtitle: "內在重構",
+    keyword: "切割好的田",
+    subtitle: "Divided Field",
     color: "#E8734A",
     blocks: [
       {
         type: "narrative",
-        content: " - 耶利米書 4:3\n- 何西阿書 10:12"
+        content: "看見一塊被切割好的田地，其中一塊閃著紅光\n並且有農夫開始翻土。這象徵上帝即將在我們的生命中動工，特別是在那些令人心痛或不易的領域。"
       },
       {
         type: "attributes",
-        content: "內在重構\nGospel Formation\n根基"
+        content: "栽培者\n醫治的神\n內在根基"
       },
       {
         type: "prayer",
-        content: "求主翻動我們生命中那些\n僵化、隱藏傷痛的「荒地」\n主啊，我宣告\n有一翻土、更新的工作從祢而來，預備我們成為更肥沃的土壤，承載神國度的產業。\n阿們。"
+        content: "求主翻動我們生命中那些\n僵化、隱藏傷痛的「荒地」，主啊，我宣告\n有一翻土、更新的工作從祢而來，預備我們成為更肥沃的土壤，承載神國度的產業。"
       },
       {
         type: "question",
@@ -51,16 +51,16 @@ const REVELATIONS = [
   {
     id: "03",
     keyword: "裸裝跑車",
-    subtitle: "內在重構",
+    subtitle: "Naked Sports Car",
     color: "#6B9FD4",
     blocks: [
       {
         type: "narrative",
-        content: " - 羅馬書 12:2\n - 腓立比書 1:6"
+        content: "一台沒有外殼、正在升級引擎和關線的跑車\n象徵團隊的生命正在被神更新與預備，神正在此過程中\n不斷更新每一個人，如同跑車內的每個器件都在經歷更新。"
       },
       {
         type: "attributes",
-        content: "內在重構\nGospel Formation\n根基"
+        content: "耐心的神\n創始成終主\n內在根基"
       },
       {
         type: "prayer",
@@ -75,20 +75,20 @@ const REVELATIONS = [
   {
     id: "04",
     keyword: "萬花筒",
-    subtitle: "群體共榮",
+    subtitle: "Kaleidoscope",
     color: "#A855F7",
     blocks: [
       {
         type: "narrative",
-        content: " - 彼得前書 4:10\n - 以弗所書 2:10"
+        content: "萬花筒裡的視界藉著光就能看見各式各樣的形狀和顏色，像極了神所造的每一位\n不論現的生命情況、與上帝親近的程度、工作忙碌狀態\n。上帝的愛和恩典在基督裡都是是的"
       },
       {
         type: "attributes",
-        content: "群體共榮\nCorporate Connectivity\n尊榮"
+        content: "創造者\n眾光之父\n群體共榮"
       },
       {
         type: "prayer",
-        content: "每一個人都是區裡重要的一員\n不論身處在哪個階段，你都值得被愛\n主求祢讓我們明白我們的受造是獨特且討你喜悅的。\n阿們。"
+        content: "每一個人都是區裡重要的一員\n不論身處在哪個階段，你都值得被愛\n主求祢讓我們明白我們的受造是獨特且討你喜悅的。"
       },
       {
         type: "question",
@@ -99,16 +99,16 @@ const REVELATIONS = [
   {
     id: "05",
     keyword: "星星燈串",
-    subtitle: "群體共榮",
+    subtitle: "Star String",
     color: "#34D399",
     blocks: [
       {
         type: "narrative",
-        content: " - 腓立比書 2:15\n - 約翰福音 15:5"
+        content: "大小不一的星星構築成串，它們靠著一道電線串連通電而發出光芒。\n那道電線是神祂自己，象徵著「連結」的季節。\n沒有人是孤島。"
       },
       {
         type: "attributes",
-        content: "群體共榮\nCorporate Connectivity\n尊榮"
+        content: "連結者\n世界的光\n群體共榮"
       },
       {
         type: "prayer",
@@ -123,20 +123,20 @@ const REVELATIONS = [
   {
     id: "06",
     keyword: "攪動的池子",
-    subtitle: "群體共榮",
+    subtitle: "Stirring Pool",
     color: "#38BDF8",
     blocks: [
       {
         type: "narrative",
-        content: " - 約翰福音 5:4\n - 以西結書 47:9"
+        content: "一個不斷往外擴張的池子，\n並且我看見有雙手在攪動這池子。\n神透過擴張我們的境界，帶領我們進入醫治的泉源"
       },
       {
         type: "attributes",
-        content: "群體共榮\nCorporate Connectivity\n尊榮"
+        content: "耶和華拉法\n醫治者\n群體共榮"
       },
       {
         type: "prayer",
-        content: "神親自攪動這個池子，如同畢士大池\n祂正在做醫治的工作，特別是在關係、生命，與信仰之中與神的關係。"
+        content: "神親自攪動這個池子，如同畢士大池\n祂正在做醫治的工作，特別是在關係、生命，與信仰之中與神的關係!"
       },
       {
         type: "question",
@@ -147,20 +147,20 @@ const REVELATIONS = [
   {
     id: "07",
     keyword: "大能的勇士",
-    subtitle: "國度使命",
+    subtitle: "Mighty Warrior",
     color: "#F59E0B",
     blocks: [
       {
         type: "narrative",
-        content: " - 士師記 6:12\n - 提摩太後書 4:2"
+        content: "神在尋找真正的敬拜者——用心靈和誠實敬拜祂。\n2026 年的敬拜將進入一個新的深度，\n透過對於神慈愛和公義審判的認識，有一群大能的勇士會被神興起。"
       },
       {
         type: "attributes",
-        content: "國度使命\nKingdom Mission\n使命"
+        content: "值得頌讚者\n萬王之王\n國度使命"
       },
       {
         type: "prayer",
-        content: "呼求聖靈喚醒沉睡的勇士。求主賜下傳講真道的膽量，使我們不畏懼傳講完整的福音，包含公義、審判與極大的恩典。\n呼求聖靈喚醒興傳講「真道」（包含審判與公義的福音）的勇士，不再做討好人的門徒\n勇士的甦醒始於認罪與悔改，向主俯伏跪拜。"
+        content: "呼求聖靈喚醒興傳講「真道」（包含審判與公義的福音）的勇士，不再做討好人的門徒\n勇士的甦醒始於認罪與悔改，向主俯伏跪拜。"
       },
       {
         type: "question",
@@ -170,21 +170,21 @@ const REVELATIONS = [
   },
   {
     id: "08",
-    keyword: "只在乎你",
-    subtitle: "國度使命",
+    keyword: "驢子進城",
+    subtitle: "The Entry on a Colt",
     color: "#8B5CF6",
     blocks: [
       {
         type: "narrative",
-        content: " - 加拉太書 1:10\n - 詩篇 73:25"
+        content: "看見耶穌騎著驢子進城，那個驢子代表著人子要來服事世界\n是非常謙卑和捨己的樣式，祂甘願做在那些被世界看為最小的人們身上。"
       },
       {
         type: "attributes",
-        content: "國度使命\nKingdom Mission\n使命"
+        content: "擴張\n謙卑君王\n國度使命"
       },
       {
         type: "prayer",
-        content: "宣告我們活在「神面前」（Coram Deo）。求主挪去對人的懼怕與對掌聲的渴慕，使我們服事的動力單單來自對神的愛。"
+        content: "聖靈，求祢賜下如耶穌般「降卑」的心志\n更是擴張我們的心，讓我們樂意服事那些最小的、下一代與不被看見的群體。"
       },
       {
         type: "question",
@@ -194,21 +194,21 @@ const REVELATIONS = [
   },
   {
     id: "09",
-    keyword: "驢子進城",
-    subtitle: "國度使命",
+    keyword: "只在乎祢",
+    subtitle: "Building",
     color: "#D97706",
     blocks: [
       {
         type: "narrative",
-        content: " - 馬太福音 21:5\n - 腓立比書 2:5-7"
+        content: "生命動力的轉向，將焦點從「人的評價」轉向「神的榮耀」。\n因為只在乎神，才能在軟弱中誇口，抵擋世界誘惑。"
       },
       {
         type: "attributes",
-        content: "國度使命\nKingdom Mission\n使命"
+        content: "建造者\n獨一真神\n國度使命"
       },
       {
         type: "prayer",
-        content: "聖靈，求祢賜下如耶穌般「降卑」的心志\n更是擴張我們的心，讓我們樂意服事那些最小的、下一代與不被看見的群體。"
+        content: "因為凡事都看見神，所以去愛人,\n所以去服事，所以忍耐，所以謙卑的生命\n禱告有一份成熟的愛要在我們的心中長出來。"
       },
       {
         type: "question",
