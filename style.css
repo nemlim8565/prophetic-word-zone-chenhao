@@ -2,7 +2,7 @@
    style.css — 2026 年度先知性領受互動網頁
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+TC:wght@400;700&display=swap');
+/* Google Fonts removed, using system fonts */
 
 /* ── 1. CSS 變數系統 (Design Tokens) ── */
 :root {
@@ -14,8 +14,8 @@
   --accent-color: #C8A97E;
   --keyword-color: #C8A97E;
 
-  --font-serif: 'Noto Serif TC', serif;
-  --font-sans: 'Noto Sans TC', sans-serif;
+  --font-serif: "微軟正黑體", "Microsoft JhengHei", sans-serif;
+  --font-sans: "微軟正黑體", "Microsoft JhengHei", sans-serif;
 
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
@@ -29,9 +29,18 @@
 }
 
 /* ── 2. Reset & Base ── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-html { font-size: 16px; scroll-behavior: smooth; }
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
 
 body {
   background-color: var(--bg-color);
@@ -50,10 +59,123 @@ body {
   min-height: 100vh;
   width: 100%;
 }
+
 .layer.active {
   display: flex;
   flex-direction: column;
   animation: fadeIn 0.4s ease forwards;
+}
+
+/* ── 3.5 Layer 0 — 通關密碼 ── */
+#layer-0 {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--spacing-xl) var(--spacing-md);
+  overflow: hidden;
+}
+
+#layer-0.fade-out {
+  animation: fadeOut 0.4s ease forwards;
+  pointer-events: none;
+}
+
+.layer-0__card {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  width: 100%;
+  max-width: 420px;
+  background: rgba(22, 22, 24, 0.7);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: var(--spacing-lg) var(--spacing-lg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.5);
+  animation: fadeInUp 0.6s ease 0.1s both;
+}
+
+.layer-0__subtitle {
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  color: var(--accent-color);
+  text-transform: uppercase;
+}
+
+.layer-0__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.06em;
+  line-height: 1.6;
+}
+
+.layer-0__input-wrap {
+  width: 100%;
+}
+
+.layer-0__input {
+  width: 100%;
+  padding: 0.85rem 1.2rem;
+  background: rgba(13, 13, 15, 0.6);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-align: center;
+  outline: none;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.layer-0__input::placeholder {
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+}
+
+.layer-0__input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 16px rgba(200, 169, 126, 0.25);
+}
+
+.layer-0__input.shake {
+  animation: shake 0.4s ease;
+  border-color: #e05c5c;
+}
+
+.layer-0__error {
+  font-size: 0.85rem;
+  color: #e05c5c;
+  letter-spacing: 0.05em;
+  min-height: 1.2em;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.layer-0__error.visible {
+  opacity: 1;
+}
+
+.layer-0__btn {
+  margin-top: 0;
+  opacity: 1;
+  animation: none;
+  padding: 0.75rem 3rem;
+  letter-spacing: 0.2em;
+}
+
+.layer-0__hint {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+  margin-top: var(--spacing-xs);
 }
 
 /* ── 4. Layer 1 — 集體查驗與呼召 ── */
@@ -135,13 +257,17 @@ body {
   opacity: 0;
   animation: fadeInUp 0.6s ease 0.55s forwards;
 }
+
 .cta-button:hover {
   background: var(--accent-color);
   color: var(--bg-color);
   box-shadow: 0 0 24px rgba(200, 169, 126, 0.35);
   transform: translateY(-2px);
 }
-.cta-button:active { transform: scale(0.96); }
+
+.cta-button:active {
+  transform: scale(0.96);
+}
 
 /* ── 5. Layer 2 — 核心領受矩陣 ── */
 #layer-2 {
@@ -154,6 +280,7 @@ body {
   margin-bottom: var(--spacing-lg);
   width: 100%;
 }
+
 .layer-2__header h2 {
   font-family: var(--font-serif);
   font-size: clamp(1.1rem, 3.5vw, 1.5rem);
@@ -161,6 +288,7 @@ body {
   letter-spacing: 0.1em;
   margin-bottom: var(--spacing-xs);
 }
+
 .layer-2__header p {
   font-size: 0.875rem;
   color: var(--text-secondary);
@@ -192,6 +320,7 @@ body {
   overflow: hidden;
   outline: none;
 }
+
 .keyword-card::before {
   content: '';
   position: absolute;
@@ -200,17 +329,26 @@ body {
   opacity: 0;
   transition: opacity var(--transition-base);
 }
+
 .keyword-card:hover {
   transform: translateY(-4px);
   border-color: var(--card-color, var(--accent-color));
-  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
-.keyword-card:hover::before { opacity: 0.06; }
-.keyword-card:active { transform: scale(0.96); }
+
+.keyword-card:hover::before {
+  opacity: 0.06;
+}
+
+.keyword-card:active {
+  transform: scale(0.96);
+}
+
 .keyword-card:focus-visible {
   outline: 2px solid var(--card-color, var(--accent-color));
   outline-offset: 2px;
 }
+
 .keyword-card.selected {
   animation: cardSelect 0.3s ease forwards;
 }
@@ -221,6 +359,7 @@ body {
   letter-spacing: 0.1em;
   color: var(--text-primary);
 }
+
 .card-keyword {
   font-family: var(--font-serif);
   font-size: clamp(1.4rem, 4vw, 1.8rem);
@@ -228,6 +367,7 @@ body {
   color: var(--card-color, var(--accent-color));
   letter-spacing: 0.05em;
 }
+
 .card-subtitle {
   font-size: 0.75rem;
   font-style: italic;
@@ -256,6 +396,7 @@ body {
   border-bottom: 1px solid var(--border-color);
   position: relative;
 }
+
 .revelation-id {
   display: block;
   font-size: 0.75rem;
@@ -263,6 +404,7 @@ body {
   color: var(--text-secondary);
   margin-bottom: var(--spacing-xs);
 }
+
 .revelation-keyword {
   font-family: var(--font-serif);
   font-size: clamp(2rem, 7vw, 3rem);
@@ -271,6 +413,7 @@ body {
   letter-spacing: 0.08em;
   line-height: 1.2;
 }
+
 .revelation-subtitle {
   font-size: 0.9rem;
   font-style: italic;
@@ -291,6 +434,7 @@ body {
   border-top: 1px solid var(--border-color);
   text-align: right;
 }
+
 .revelation-meta {
   font-size: 0.75rem;
   color: var(--text-secondary);
@@ -321,6 +465,7 @@ body {
   opacity: 0;
   animation: blockReveal 0.5s ease forwards;
 }
+
 .block-attributes::before {
   content: attr(data-keyword);
   font-size: clamp(5rem, 15vw, 8rem);
@@ -336,6 +481,7 @@ body {
   white-space: nowrap;
   user-select: none;
 }
+
 .attr-item {
   font-family: var(--font-serif);
   font-size: clamp(1.3rem, 4vw, 1.6rem);
@@ -359,6 +505,7 @@ body {
   opacity: 0;
   animation: blockReveal 0.5s ease forwards;
 }
+
 .prayer-label {
   position: absolute;
   top: -0.65rem;
@@ -382,6 +529,7 @@ body {
   max-width: 700px;
   justify-content: center;
 }
+
 .action-btn {
   padding: 0.7rem 1.8rem;
   border-radius: 2px;
@@ -392,68 +540,173 @@ body {
   transition: all var(--transition-base);
   outline: none;
 }
-.action-btn:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }
+
+.action-btn:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
 #btn-back {
   background: transparent;
   border: 1px solid var(--border-color);
   color: var(--text-secondary);
 }
-#btn-back:hover { border-color: var(--text-secondary); color: var(--text-primary); }
+
+#btn-back:hover {
+  border-color: var(--text-secondary);
+  color: var(--text-primary);
+}
+
 #btn-screenshot {
   background: var(--accent-color);
   border: 1px solid var(--accent-color);
   color: var(--bg-color);
   font-weight: 700;
 }
-#btn-screenshot:hover { box-shadow: 0 0 20px rgba(200, 169, 126, 0.4); transform: translateY(-1px); }
-#btn-screenshot:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+#btn-screenshot:hover {
+  box-shadow: 0 0 20px rgba(200, 169, 126, 0.4);
+  transform: translateY(-1px);
+}
+
+#btn-screenshot:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
 
 /* ── 7. Animations ── */
 @keyframes breathGlow {
-  0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
-  50%       { opacity: 0.7; transform: translate(-50%, -50%) scale(1.08); }
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  50% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1.08);
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-8px); }
+  40%       { transform: translateX(8px); }
+  60%       { transform: translateX(-5px); }
+  80%       { transform: translateX(5px); }
 }
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes cardSelect {
-  0%   { transform: scale(1); }
-  50%  { transform: scale(1.05); }
-  100% { transform: scale(1); opacity: 0; }
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
 }
 
 @keyframes blockReveal {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ── 8. Responsive Breakpoints ── */
 @media (min-width: 480px) {
-  .keyword-card { padding: var(--spacing-md); }
+  .keyword-card {
+    padding: var(--spacing-md);
+  }
 }
 
 @media (min-width: 768px) {
-  .keyword-grid { grid-template-columns: repeat(3, 1fr); }
-  .keyword-card { min-width: 200px; }
+  .keyword-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .keyword-card {
+    min-width: 200px;
+  }
 }
 
 @media (min-width: 1200px) {
-  .keyword-grid { max-width: 900px; }
-  #layer-3__capture-zone { max-width: 700px; }
+  .keyword-grid {
+    max-width: 900px;
+  }
+
+  #layer-3__capture-zone {
+    max-width: 700px;
+  }
 }
 
 /* ── 9. Accessibility ── */
 @media (prefers-reduced-motion: reduce) {
-  .breath-glow { animation: none; opacity: 0.4; }
-  .layer-1__year, .layer-1__title, .layer-1__body, .cta-button { animation: none; opacity: 1; }
-  .block-narrative, .block-attributes, .block-prayer { animation: none; opacity: 1; }
-  .keyword-card { transition: none; }
+  .breath-glow {
+    animation: none;
+    opacity: 0.4;
+  }
+
+  .layer-1__year,
+  .layer-1__title,
+  .layer-1__body,
+  .cta-button {
+    animation: none;
+    opacity: 1;
+  }
+
+  .block-narrative,
+  .block-attributes,
+  .block-prayer {
+    animation: none;
+    opacity: 1;
+  }
+
+  .keyword-card {
+    transition: none;
+  }
 }

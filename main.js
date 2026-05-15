@@ -1,4 +1,4 @@
-// main.js — 路由邏輯、互動行為、截圖功能
+// main.js — 密碼驗證、路由邏輯、互動行為、截圖功能
 
 /* ── 狀態 ── */
 const state = { currentKeyword: null };
@@ -115,8 +115,74 @@ async function captureZone() {
   }
 }
 
-/* ── 初始化 ── */
-document.addEventListener('DOMContentLoaded', () => {
+/* ── 密碼驗證（SHA-256 + Salt，與 nicepage.js 相同原理）── */
+async function verifyPassword(input) {
+  const body = document.body;
+  const salt = body.getAttribute('data-salt') || '';
+  const storedHash = body.getAttribute('data-salted-password') || '';
+
+  const msgBuffer = new TextEncoder().encode(input + salt);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+  return hashHex === storedHash;
+}
+
+/* ── 通關密碼 UI 互動 ── */
+function initPasswordGate() {
+  const input = document.getElementById('password-input');
+  const btn = document.getElementById('btn-unlock');
+  const error = document.getElementById('password-error');
+  const wrap = document.getElementById('password-input-wrap');
+  const layer0 = document.getElementById('layer-0');
+
+  async function attemptUnlock() {
+    const value = input.value;
+    if (!value) return;
+
+    const ok = await verifyPassword(value);
+
+    if (ok) {
+      // 密碼正確：淡出 Layer 0，進入 Layer 1
+      layer0.classList.add('fade-out');
+      setTimeout(() => {
+        layer0.classList.remove('active', 'fade-out');
+        initApp();
+      }, 400);
+    } else {
+      // 密碼錯誤：顯示提示 + shake 動畫
+      error.classList.add('visible');
+      input.classList.add('shake');
+      input.value = '';
+
+      // 移除 shake class 讓動畫可以重複觸發
+      input.addEventListener('animationend', () => {
+        input.classList.remove('shake');
+      }, { once: true });
+
+      setTimeout(() => {
+        error.classList.remove('visible');
+      }, 2500);
+
+      input.focus();
+    }
+  }
+
+  btn.addEventListener('click', attemptUnlock);
+
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      attemptUnlock();
+    }
+  });
+}
+
+/* ── 主應用初始化（密碼驗證後才執行）── */
+function initApp() {
+  // 跳到 Layer 1
+  router.goTo('layer-1');
 
   // Layer 1 → Layer 2
   document.getElementById('btn-enter').addEventListener('click', () => {
@@ -168,4 +234,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 截圖
   document.getElementById('btn-screenshot').addEventListener('click', captureZone);
+}
+
+/* ── 啟動 ── */
+document.addEventListener('DOMContentLoaded', () => {
+  initPasswordGate();
 });
