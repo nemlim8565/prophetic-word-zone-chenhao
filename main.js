@@ -173,7 +173,7 @@ async function captureZone() {
       el.style.transform = '';
       el.style.animation = '';
     });
-    btn.textContent = '截圖存檔';
+    btn.textContent = '截圖';
     btn.disabled = false;
   }
 }

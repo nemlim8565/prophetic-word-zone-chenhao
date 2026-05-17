@@ -171,7 +171,7 @@ const REVELATIONS = [
   {
     id: "08",
     keyword: "驢子進城",
-    subtitle: "The Entry on a Colt",
+    subtitle: "Entry on a Colt",
     color: "#8B5CF6",
     blocks: [
       {
